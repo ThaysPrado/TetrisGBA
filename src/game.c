@@ -17,7 +17,7 @@ enum { ERASE_PIECE, DRAW_PIECE };
 #define ROWS       18
 #define COLS       10
 // offsets of the playfield - left side
-#define X_OFFS     2
+#define X_OFFS     10
 #define Y_OFFS     0
 
 #define BLINK_UPD_RATE	100
@@ -49,26 +49,26 @@ static int just_spawned;
 
 // Background Composition
 static const char *bgdata[SCR_ROWS] = {
-	" L..........R{-----}          ",
-	" L..........R(.....)          ",
-	" L..........R[_____]          ",
-	" L..........R.......          ",
-	" L..........R                 ",
-	" L..........R{-----}          ",
-	" L..........R(.....)          ",
-	" L..........R(.....)          ",
-	" L..........R>=====<          ",
-	" L..........R(.....)          ",
-	" L..........R(.....)          ",
-	" L..........R[_____]          ",
-	" L..........R {----}          ",
-	" L..........R (....)          ",
-	" L..........R (....)          ",
-	" L..........R (....)          ",
-	" L..........R (....)          ",
-	" L..........R [____]          ",
-	" `BBBBBBBBBB/                 ",
-	"                              "
+	" {-----} L..........R {----} ",
+	" (.....) L..........R (....) ",
+	" (.....) L..........R (....) ",
+	" [_____] L..........R (....) ",
+	"         L..........R (....) ",
+	"         L..........R [____] ",
+	" {-----} L..........R        ",
+	" (.....) L..........R        ",
+	" (.....) L..........R        ",
+	" >=====< L..........R        ",
+	" (.....) L..........R        ",
+	" (.....) L..........R        ",
+	" [_____] L..........R        ",
+	"         L..........R        ",
+	"         L..........R        ",
+	"         L..........R        ",
+	"         L..........R        ",
+	"         L..........R        ",
+	"         `BBBBBBBBBB/        ",
+	"                             "
 };
 
 // TODO: - include levels
@@ -321,7 +321,7 @@ long update(long msec)
 // TODO: - improve random pieces algorithm
 static int spawn(void)
 {
-	static const int preview_pos[] = {13, 13};
+	static const int preview_pos[] = {1, 13};
 	int r, tries = 2;
 
 	do {
@@ -380,7 +380,7 @@ static void draw_line(int row, int blink)
 
 	if(blink) {
 		int *sptr = scr + (row + Y_OFFS) * SCR_COLS + X_OFFS;
-		for(i = 0; i< COLS; i++) {
+		for(i = 0; i < COLS; i++) {
 			*dptr++ = *sptr++;
 		}
 	} else {
