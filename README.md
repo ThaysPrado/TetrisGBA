@@ -1,6 +1,6 @@
 # TetrisGBA
 
-Tetris game written in c using DEVKITARM
+Tetris game written in c using DEVKitPro
 
 ### Getting Started
 1 - Clone this repository
